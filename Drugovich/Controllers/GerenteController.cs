@@ -1,6 +1,7 @@
 ﻿using Drugovich.Entities;
 using Drugovich.Repositories;
 using Drugovich.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,7 @@ namespace Drugovich.Controllers
             _clienteRepositorio = clienteRepositorio;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Gerente>>> BuscarTodosGerentes() 
         {
@@ -30,6 +32,7 @@ namespace Drugovich.Controllers
             return Ok(gerentes);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Gerente>> BuscarPorId(int id)
         {
@@ -37,6 +40,7 @@ namespace Drugovich.Controllers
             return Ok(gerentes);
         }
 
+        [Authorize]
         [HttpGet("{id}/grupo")]
         public async Task<ActionResult<List<Grupo>>> BuscarTodosGrupos()
         {
@@ -44,6 +48,7 @@ namespace Drugovich.Controllers
             return Ok(grupos);
         }
 
+        [Authorize]
         [HttpGet("{id}/grupo/{idGrupo}")]
         public async Task<ActionResult<Grupo>> BuscarGrupoPorId(int idGrupo)
         {
@@ -51,6 +56,7 @@ namespace Drugovich.Controllers
             return Ok(grupos);
         }
 
+        [Authorize]
         [HttpPost("{id}/grupo")]
         public async Task<ActionResult<Grupo>> Cadastrar([FromBody] Grupo grupoModel, int id)
         {
@@ -66,6 +72,7 @@ namespace Drugovich.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}/grupo/{idGrupo}")]
         public async Task<ActionResult<Grupo>> Atualizar([FromBody] Grupo grupoModel, int id, int idGrupo)
         {
@@ -82,6 +89,7 @@ namespace Drugovich.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}/grupo/{idGrupo}")]
         public async Task<ActionResult<Grupo>> Apagar(int id,int idGrupo)
         {
@@ -97,6 +105,7 @@ namespace Drugovich.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}/cliente/{idGrupo}")]
         public async Task<ActionResult<List<Cliente>>> BuscarClientePorIdGrupo(int idGrupo)
         {
@@ -104,6 +113,7 @@ namespace Drugovich.Controllers
             return Ok(clientes);
         }
 
+        [Authorize]
         [HttpPost("{id}/cliente")]
         public async Task<ActionResult<Cliente>> CadastrarCliente([FromBody] Cliente clienteModel, int id)
         {
@@ -119,6 +129,7 @@ namespace Drugovich.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}/cliente/{idCliente}")]
         public async Task<ActionResult<Cliente>> ApagarCliente(int id, int idCliente)
         {
