@@ -6,8 +6,15 @@ C# .NET 6
 
 Postgresql 14
 
+#### **Autenticação**
+JWT Bearer
+
 #### **EndPoints**
 O campo id é do Gerente para verificação do nível
+#### **Autenticação:**
+`   `Método: Post
+
+`         `/api/auth
 #### **Grupo:**
 #### `	`**Criar:**
 `		`Método: POST
